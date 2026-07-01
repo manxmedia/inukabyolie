@@ -55,7 +55,7 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email Us",
-      details: ["hello@inukabyolie.co.za", "sales@inukabyolie.co.za"],
+      details: ["hello@inukabyolie.co.za"],
       description: "Send us an email anytime",
     },
     {

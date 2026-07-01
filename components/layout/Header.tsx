@@ -58,7 +58,7 @@ export default function Header() {
               href="/"
               aria-label="INUKA by Olie"
             >
-              INUKA<span className="text-primary">by Olie</span>
+              INUKA <span className="text-primary">by Olie</span>
             </Link>
 
             <nav
