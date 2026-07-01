@@ -43,7 +43,7 @@ export default function OrderSummary() {
                   Free
                 </Badge>
               ) : (
-                `$${shipping.toFixed(2)}`
+                `R${shipping.toFixed(2)}`
               )}
             </span>
           </div>
