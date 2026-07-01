@@ -52,9 +52,6 @@ export default function Footer() {
       title: "Company",
       links: [
         { href: "/about", label: "About Us" },
-        { href: "/", label: "Careers" },
-        { href: "/", label: "Blog" },
-        { href: "/", label: "Press" },
       ],
     },
     {
@@ -62,8 +59,6 @@ export default function Footer() {
       links: [
         { href: "/", label: "Privacy Policy" },
         { href: "/", label: "Terms & Conditions" },
-        { href: "/", label: "Cookie Policy" },
-        { href: "/", label: "Accessibility" },
       ],
     },
   ];
