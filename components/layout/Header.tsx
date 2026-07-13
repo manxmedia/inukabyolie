@@ -1,21 +1,27 @@
 "use client";
 
 import { useCart } from "@/context/CartContext";
+import { useSearch } from "@/context/SearchContext";
 import { Menu, Search, ShoppingCart, X } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "../ui/button";
 
 export default function Header() {
   const { cart } = useCart();
-  const cartCount =
-    cart?.reduce((total, item) => total + item.quantity, 0) || 0;
+  const { searchQuery, setSearchQuery } = useSearch();
+  const router = useRouter();
+
+  const cartCount = cart?.reduce((total, item) => total + item.quantity, 0) || 0;
+
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   const pathname = usePathname();
+  
+ 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +46,41 @@ export default function Header() {
 
   const isActivePath = (path: string) => pathname === path;
 
-  const navItems = [{ href: "/contact", label: "Contact" }];
+  const navItems = [
+  { href: "/", label: "Home" },  
+  { href: "/about", label: "About Us" },
+];
+
+  const navContact = [
+  { href: "/contact", label: "Contact Us" },
+];
+
+const shopItems = [
+  { href: "/shop/fragrances", label: "Fragrances" },
+  { href: "/shop/body-care", label: "Body Care" },
+  { href: "/shop/wellness", label: "Wellness" },
+  { href: "/shop/home-fragrance", label: "Home Fragrance" },
+  { href: "/shop/beauty", label: "Beauty" },
+  { href: "/shop/bath-spa", label: "Bath & Spa" },
+  { href: "/shop/hair-care", label: "Hair Care" },
+  { href: "/shop/foot-care", label: "Foot Care" },
+  { href: "/shop/kids-items", label: "Kids Items" },
+];
+
+const collectionItems = [
+  { href: "/newArrivals", label: "New Arrivals" },
+  { href: "/featured", label: "Featured" },
+  { href: "/sale", label: "Sale" },
+];
+
+const supportItems = [
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms & Conditions" },
+  { href: "/shipping", label: "Shipping & Delivery" },
+  { href: "/returns", label: "Returns & Exchanges" },
+  { href: "/disclaimer", label: "Disclaimer" },
+  { href: "/faqs", label: "FAQs & Help Center" },
+];
 
   return (
     <header
@@ -61,11 +101,13 @@ export default function Header() {
               INUKA <span className="text-primary">by Olie</span>
             </Link>
 
-            <nav
-              className="hidden md:flex items-center space-x-1"
+              <nav
+              className="hidden md:flex items-center space-x-2"
               role="navigation"
               aria-label="Main navigation"
             >
+
+              {/* MenuItems */}
               {navItems.map(({ href, label }) => (
                 <Link
                   key={href}
@@ -75,17 +117,105 @@ export default function Header() {
                       ? "bg-orange-100 shadow-md"
                       : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   }`}
-                  aria-current={isActivePath(href) ? "page" : undefined}
                 >
                   {label}
                 </Link>
-              ))}
+              ))} 
+
+
+              {/* Shop Dropdown */}
+              <div className="relative group">
+                <button
+                  type="button"
+                  className="py-2 px-4 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200"
+                >
+                  Shop ▾
+                </button>
+
+                <div className="absolute left-0 mt-0 hidden group-hover:block w-64 rounded-xl border bg-white shadow-xl z-50">
+
+                  {shopItems.map(({ href, label }) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="block px-5 py-3 text-sm hover:bg-gray-100 transition"
+                    >
+                      {label}
+                    </Link>
+                  ))}
+
+                </div>
+              </div>
+
+              {/* Collections */}
+              <div className="relative group">
+                <button
+                  type="button"
+                  className="py-2 px-4 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100"
+                >
+                  Collections ▾
+                </button>
+
+                <div className="absolute left-0 mt-0 hidden group-hover:block w-60 rounded-xl border bg-white shadow-xl z-50">
+
+                  {collectionItems.map(({ href, label }) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="block px-5 py-3 hover:bg-gray-100 text-sm"
+                    >
+                      {label}
+                    </Link>
+                  ))}
+
+                </div>
+              </div>
+
+              {/* Support */}
+              <div className="relative group">
+                <button
+                  type="button"
+                  className="py-2 px-4 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100"
+                >
+                  Support ▾
+                </button>
+
+                <div className="absolute left-0 mt-0 hidden group-hover:block w-72 rounded-xl border bg-white shadow-xl z-50">
+
+                  {supportItems.map(({ href, label }) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="block px-5 py-3 hover:bg-gray-100 text-sm"
+                    >
+                      {label}
+                    </Link>
+                  ))}
+
+                </div>
+              </div>
+
+              {/* Contact */}
+              {navContact.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`relative py-2 px-4 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    isActivePath(href)
+                      ? "bg-orange-100 shadow-md"
+                      : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  }`}
+                >
+                  {label}
+                </Link>
+              ))}    
+
             </nav>
+
           </div>
 
           <div className="hidden lg:flex flex-1 max-w-md mx-8">
-            <form className="relative w-full">
-              <input
+            <form className="relative w-full" onSubmit={(e) => {e.preventDefault();router.push("/");}}>              <input
                 type="search"
                 placeholder="Search products..."
                 value={searchQuery}
@@ -152,7 +282,9 @@ export default function Header() {
 
         {isSearchOpen && (
           <div className="lg:hidden mt-4 animate-in slide-in-from-top duration-200">
-            <form className="relative">
+            <form  className="relative"  onSubmit={(e) => { e.preventDefault(); router.push("/"); setIsSearchOpen(false);
+  }}
+>
               <input
                 type="search"
                 placeholder="Search products..."
@@ -167,44 +299,106 @@ export default function Header() {
           </div>
         )}
 
-        {isMobileOpen && (
-          <nav
-            className="md:hidden mt-4 animate-in slide-in-from-top duration-200"
-            role="navigation"
-            aria-label="Mobile navigation"
-          >
-            <div className="flex flex-col space-y-3 pb-4 border-b border-gray-200">
-              {navItems.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  onClick={closeMobileMenu}
-                  className={`text-sm font-medium py-2 px-3 rounded-lg transition-all ${
-                    isActivePath(href)
-                      ? "bg-orange-100"
-                      : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-                  }`}
-                  aria-current={isActivePath(href) ? "page" : undefined}
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
+{isMobileOpen && (
+<nav
+  className="md:hidden mt-4 animate-in slide-in-from-top duration-200 max-h-[75vh] overflow-y-auto"
+  role="navigation"
+  aria-label="Mobile navigation"
+>
 
-            <div className="flex flex-col space-y-3 pt-4 sm:hidden">
-              <Button variant="outline" className="w-full text-sm" asChild>
-                <Link href="/" onClick={closeMobileMenu}>
-                  Sign In
-                </Link>
-              </Button>
-              <Button className="w-full text-sm" variant="default" asChild>
-                <Link href="/" onClick={closeMobileMenu}>
-                  Sign Up
-                </Link>
-              </Button>
-            </div>
-          </nav>
-        )}
+    <div className="flex flex-col space-y-2 pb-4 border-b">
+
+      {navItems.map(({ href, label }) => (
+        <Link
+          key={href}
+          href={href}
+          onClick={closeMobileMenu}
+          className="py-2 px-3 rounded-lg hover:bg-gray-50"
+        >
+          {label}
+        </Link>
+      ))}
+
+      <div className="pt-4">
+        <p className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
+          Shop
+        </p>
+
+        {shopItems.map(({ href, label }) => (
+          <Link
+            key={href}
+            href={href}
+            onClick={closeMobileMenu}
+            className="block py-2 px-6 rounded-lg hover:bg-gray-50"
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
+
+      <div className="pt-4">
+        <p className="px-3 mb-2 text-xs font-semibold uppercase text-gray-500">
+          Collections
+        </p>
+
+        {collectionItems.map(({ href, label }) => (
+          <Link
+            key={href}
+            href={href}
+            onClick={closeMobileMenu}
+            className="block py-2 px-6 rounded-lg hover:bg-gray-50"
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
+
+      <div className="pt-4">
+        <p className="px-3 mb-2 text-xs font-semibold uppercase text-gray-500">
+          Support
+        </p>
+
+        {supportItems.map(({ href, label }) => (
+          <Link
+            key={href}
+            href={href}
+            onClick={closeMobileMenu}
+            className="block py-2 px-6 rounded-lg hover:bg-gray-50"
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
+
+      {navContact.map(({ href, label }) => (
+        <Link
+          key={href}
+          href={href}
+          onClick={closeMobileMenu}
+          className="py-2 px-3 rounded-lg hover:bg-gray-50"
+        >
+          {label}
+        </Link>
+      ))}
+
+    </div>
+
+    <div className="flex flex-col space-y-3 pt-4 sm:hidden">
+      <Button variant="outline" className="w-full text-sm" asChild>
+        <Link href="/" onClick={closeMobileMenu}>
+          Sign In
+        </Link>
+      </Button>
+
+      <Button className="w-full text-sm" variant="default" asChild>
+        <Link href="/" onClick={closeMobileMenu}>
+          Sign Up
+        </Link>
+      </Button>
+    </div>
+  </nav>
+)}
+
       </div>
     </header>
   );

@@ -4,286 +4,450 @@
     "name": "Majestic Dawn For Him",
     "price": 450,
     "image": "/images/PerfumeMajesticDawnForHim.jpg",
-    "description": "Majestic Dawn For Him 50ml Perfume"
+    "description": "Majestic Dawn For Him 50ml Perfume",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 2,
     "name": "Pure Obsession For Her",
     "price": 450,
     "image": "/images/PerfumePureObsessionForHer.jpg",
-    "description": "Pure Obsession For He 50ml Perfume"
+    "description": "Pure Obsession For He 50ml Perfume",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 3,
     "name": "Eternal Bliss for Her",
     "price": 450,
     "image": "/images/PerfumeEternalBlissforHer.jpg",
-    "description": "Eternal Bliss for Her  50ml Perfume "
+    "description": "Eternal Bliss for Her  50ml Perfume ",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 4,
     "name": "Royal Legacy For Him",
     "price": 450,
     "image": "/images/PerfumeRoyalLegacyForHim.jpg",
-    "description": "Royal Legacy For Him 50ml Perfume"
+    "description": "Royal Legacy For Him 50ml Perfume",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 5,
     "name": "Ke Nako Gender Neutral",
     "price": 285,
     "image": "/images/PerfumeKeNakoGN.jpg",
-    "description": "KeNako Gender Neutral 30ml Perfume "
+    "description": "KeNako Gender Neutral 30ml Perfume ",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 6,
     "name": "Creed Aventus for Him",
     "price": 285,
     "image": "/images/PerfumeCreedAventusforHim.jpg",
-    "description": "CreedAventus for Him 30ml Perfume "
+    "description": "CreedAventus for Him 30ml Perfume ",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 7,
     "name": "Magnificent Classic Blue Range",
     "price": 195,
     "image": "/images/PerfumeMagnificentClassicBlueRange.jpg",
-    "description": "Magnificent Classic Blue Rang 30ml Perfume"
+    "description": "Magnificent Classic Blue Rang 30ml Perfume",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 8,
     "name": "Be Bold Brave Brilliant",
     "price": 195,
     "image": "/images/PerfumeBeBoldBraveBrilliantGN.jpg",
-    "description": "Be Bold Brave Brilliant Gender Neutral 30ml Perfume "
+    "description": "Be Bold Brave Brilliant Gender Neutral 30ml Perfume ",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 9,
     "name": "Paradise For Her",
     "price": 195,
     "image": "/images/PerfumeParadiseForHer.jpg",
-    "description": "Paradise For Her 30ml Perfume"
+    "description": "Paradise For Her 30ml Perfume",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 10,
     "name": "Lady Deluxe For Her",
     "price": 195,
     "image": "/images/PerfumeLadyDeluxeForHer.jpg",
-    "description": "Lady Deluxe For Her 30ml Perfume"
+    "description": "Lady Deluxe For Her 30ml Perfume",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 11,
     "name": "Rising For Him",
     "price": 195,
     "image": "/images/PerfumeRisingForHim.jpg",
-    "description": "Rising For Him 30ml Perfume"
+    "description": "Rising For Him 30ml Perfume",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 12,
     "name": "King For Him",
     "price": 195,
-    "image": "/images/PerfumeKigForHim.jpg",
-    "description": "King For Him 30ml Perfume"
+    "image": "/images/PerfumeKingForHim.jpg",
+    "description": "King For Him 30ml Perfume",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 13,
     "name": "Unstopable For Her",
     "price": 195,
     "image": "/images/PerfumeUnstopableForHer.jpg",
-    "description": "Unstopable For Her 30ml Perfume"
+    "description": "Unstopable For Her 30ml Perfume",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 14,
     "name": "Vision For Her",
     "price": 195,
     "image": "/images/PerfumeVisionForHer.jpg",
-    "description": "Vision For Her 30ml Perfume"
+    "description": "Vision For Her 30ml Perfume",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
   {
     "id": 15,
     "name": "Vision For Him",
     "price": 195,
     "image": "/images/PerfumeVisionForHim.jpg",
-    "description": "Vision For Him 30ml Perfume"
+    "description": "Vision For Him 30ml Perfume",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["fragrance"]
   },
     {
     "id": 16,
     "name": "Be Bold Brave Brilliant",
     "price": 125,
     "image": "/images/LotionBeBoldBraveBrilliantGN.jpg",
-    "description": "Be Bold Brave Brilliant Gender Neutral Lotion"
+    "description": "Be Bold Brave Brilliant Gender Neutral Lotion",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["body-care"]
   },
   {
     "id": 17,
     "name": "Creed Adventus for Her",
     "price": 165,
     "image": "/images/LotionCreedAdventus forHER Luxury.jpg",
-    "description": "Creed Adventus for Her Luxury 200ml Lotion"
+    "description": "Creed Adventus for Her Luxury 200ml Lotion",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["body-care"]
   },
   {
     "id": 18,
     "name": "King For Him",
     "price": 125,
     "image": "/images/LotionKingForHim.jpg",
-    "description": "King For Him 200ml Lotion"
+    "description": "King For Him 200ml Lotion",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["body-care"]
    },
   {
     "id": 19,
      "name": "Lady Deluxe For Her",
     "price": 125,
     "image": "/images/LotionLadyDeluxeForHer.jpg",
-    "description": "Lady Deluxe For Her 200ml Lotion"
+    "description": "Lady Deluxe For Her 200ml Lotion",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["body-care"]
    },
   {
     "id": 20,
     "name": "Paradise For Her",
     "price":125,
     "image": "/images/LotionParadiseForHer.jpg",
-    "description": "Paradise For Her 200ml Lotion"
+    "description": "Paradise For Her 200ml Lotion",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["body-care"]
    },
   {
     "id": 21,
     "name": "Unstopable For Her",
     "price":125,
     "image": "/images/LotionUnstopableForHer.jpg",
-    "description": "Unstopable For Her 200ml  Lotion"
+    "description": "Unstopable For Her 200ml  Lotion",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["body-care"]
    },
   {
     "id": 22,
     "name": "Hair And Body Mist Lime For Her",
     "price": 95,
     "image": "/images/HairAndBodyMistLimeForHer.jpg",
-    "description": "Hair And Body Mist 100ml Lime For Her"
+    "description": "Hair And Body Mist 100ml Lime For Her",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["body-care", "hair-care"]
    },
   {
     "id": 23,
     "name": "Hair And Body Mist Pink For Her",
     "price": 95,
     "image": "/images/HairAndBodyMistPinkForHer.jpg",
-    "description": "Hair And Body Mist 100ml Pink For Her"
+    "description": "Hair And Body Mist 100ml Pink For Her",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["body-care", "hair-care"]
    },
   {
     "id": 24,
     "name": "Hair Food And Styling Pomade",
     "price": 95,
     "image": "/images/HairFoodAndStylingPomadeNaturalNourishing.jpg",
-    "description": "Hair Food And Styling Pomade 150ml Natural Nourishing"
+    "description": "Hair Food And Styling Pomade 150ml Natural Nourishing",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["hair-care"]
    },
   {
     "id": 25,
     "name": "Hair Growth Oil Coffee Infused",
     "price": 125,
     "image": "/images/HairGrowthOilCoffeeInfused.jpg",
-    "description": "Hair Growth Oil 50ml Coffee Infused"
+    "description": "Hair Growth Oil 50ml Coffee Infused",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["hair-care", "wellness"]
    },
   {
     "id": 26,
     "name": "Hand And Cuticle Berry",
     "price": 30,
     "image": "/images/HandAndCuticleBerry.jpg",
-    "description": "Hand And Cuticle Cream 30ml Berry"
+    "description": "Hand And Cuticle Cream 30ml Berry",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["beauty", "body-care"]
    },
   {
     "id": 27,
     "name": "Hand And Cuticle Lemon",
     "price": 30,
     "image": "/images/HandAndCuticleLemon.jpg",
-    "description": "Hand And Cuticle Cream 30ml Lemon"
+    "description": "Hand And Cuticle Cream 30ml Lemon",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["beauty", "body-care"]
    },
   {
     "id": 28,
    "name": "Hand And Cuticle Peach",
     "price": 30,
     "image": "/images/HandAndCuticlePeach.jpg",
-    "description": "Hand And Cuticle Cream 30ml Peach"
+    "description": "Hand And Cuticle Cream 30ml Peach",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["beauty", "body-care"]
    },
   {
     "id": 29,
     "name": "Hand And Cuticle Vanilla",
     "price": 30,
     "image": "/images/HandAndCuticleVanilla.jpg",
-    "description": "Hand And Cuticle Cream 30ml Vanilla"
+    "description": "Hand And Cuticle Cream 30ml Vanilla",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["beauty", "body-care"]
    },
   {
     "id": 30,
     "name": "Hand And Cuticle Watermelon",
     "price": 30,
     "image": "/images/HandAndCuticleWatermelon.jpg",
-    "description": "Hand And Cuticle Cream 30ml Watermolon"
+    "description": "Hand And Cuticle Cream 30ml Watermelon",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["beauty", "body-care"]
    },
   {
     "id": 31,
     "name": "Lipstick ML10",
     "price": 125,
     "image": "/images/LipstickML10 MatteLiquid.jpg",
-    "description": "Lipstick ML10 MatteLiquid"
+    "description": "Lipstick ML10 MatteLiquid",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["beauty"]
    },
   {
     "id": 32,
     "name": "Lipstick ML14",
     "price": 125,
     "image": "/images/LipstickML14MatteLiquid.jpg",
-    "description": "Lipstick ML14 MatteLiquid"
+    "description": "Lipstick ML14 MatteLiquid",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["beauty"]
    },
   {
     "id": 33,
     "name": "Lipstick ML15",
     "price": 125,
     "image": "/images/LipstickML15MatteLiquid.jpg",
-    "description": "Lipstick ML15 MatteLiquid"
+    "description": "Lipstick ML15 MatteLiquid",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["beauty"]
    },
   {
     "id": 34,
     "name": "Lipstick ML16",
     "price": 125,
     "image": "/images/LipstickML16MatteLiquid.jpg",
-    "description": "Lipstick ML16 MatteLiquid"
+    "description": "Lipstick ML16 MatteLiquid",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["beauty"]
    },
   {
     "id": 35,
     "name": "Skin Care Essential Oil",
     "price": 120,
     "image": "/images/SkinCareEssentialOil.jpg",
-    "description": "Skin Care Essential Oil"
+    "description": "Skin Care Essential Oil",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["beauty", "wellness"]
    },
   {
     "id": 36,
     "name": "Rub Balm Relief Remedy",
     "price": 165,
     "image": "/images/RubBalmReliefRemedy.jpg",
-    "description": "Rub Balm Relief Remedy"
+    "description": "Rub Balm Relief Remedy",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["body-care"]
    },
   {
     "id": 37,
     "name": "Car and Wadrobe Diffuser",
     "price": 55,
     "image": "/images/DiffuserCarandWadrobe.jpg",
-    "description": "Car and Wadrobe Diffuser"
+    "description": "Car and Wadrobe Diffuser",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["home-fragrance", "fragrance"]
    },
   {
     "id": 38,
     "name": "Amber Aura Reed Room Diffuser",
     "price": 255,
     "image": "/images/RoomDiffuserAmberAuraReed.jpg",
-    "description": "Room Diffuser Amber Aura Reed"
+    "description": "Room Diffuser Amber Aura Reed",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["home-fragrance", "fragrance"]
    },
   {
     "id": 39,
     "name": "Midnight Calm Reed Room Diffuser",
     "price": 255,
     "image": "/images/RoomDiffuserMidnightCalmReed.jpg",
-    "description": "Room Diffuser Midnight Calm Reed"
+    "description": "Room Diffuser Midnight Calm Reed",
+    "newArrival": true,
+    "sale": false,
+    "featured": true,
+    "category": ["home-fragrance", "fragrance"]
+
    },
   {
     "id": 40,
     "name": "Midnight Calm Scented Envelope",
     "price": 50,
     "image": "/images/ScentedEnvelopeMidnightCalm.jpg",
-    "description": "Scented Envelope Midnight Calm"
+    "description": "Scented Envelope Midnight Calm",
+    "newArrival": true,
+    "sale": true,
+    "featured": true,
+    "category": ["home-fragrance", "fragrance"]
    },
   {
     "id": 41,
     "name": "Amber Aura Scented Envelope",
     "price": 50,
     "image": "/images/ScentedEnvelopeAmberAura.jpg",
-    "description": "Scented Envelope Amber Aura"
-   } 
+    "description": "Scented Envelope Amber Aura",
+    "newArrival": true,
+    "sale": true,
+    "featured": true,
+    "category": ["home-fragrance", "fragrance"]} 
 ]

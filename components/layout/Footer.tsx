@@ -33,19 +33,17 @@ export default function Footer() {
     {
       title: "Shop",
       links: [
-        { href: "/shop", label: "All Products" },
-        { href: "/shop", label: "New Arrivals" },
-        { href: "/shop", label: "Sale" },
-        { href: "/shop", label: "Featured" },
-      ],
+        { href: "/", label: "All Products" },
+        { href: "/newArrivals", label: "New Arrivals" },
+        { href: "/sale", label: "Sale" },
+        { href: "/featured", label: "Featured" },
+              ],
     },
     {
       title: "Customer Care",
       links: [
         { href: "/contact", label: "Contact Us" },
-        { href: "/", label: "Help Center" },
-        { href: "/", label: "Shipping Info" },
-        { href: "/", label: "Returns & Exchanges" },
+        { href: "/faqs", label: "FAQs & Help Center" },
       ],
     },
     {
@@ -57,8 +55,11 @@ export default function Footer() {
     {
       title: "Legal",
       links: [
-        { href: "/", label: "Privacy Policy" },
-        { href: "/", label: "Terms & Conditions" },
+        { href: "/privacy", label: "Privacy Policy" },
+        { href: "/terms", label: "Terms & Conditions" },
+        { href: "/shipping", label: "Shipping & Delivery Policy" },
+        { href: "/returns", label: "Returns & Exchanges" },
+        { href: "/disclaimer", label: "Disclaimer"},
       ],
     },
   ];
@@ -131,6 +132,7 @@ export default function Footer() {
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
                   <Mail className="h-4 w-4 text-primary" />
                   <span>hello@inukabyolie.co.za</span>
+                  <span>support@inukabyolie.co.za</span>
                 </div>
               </div>
 

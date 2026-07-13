@@ -1,9 +1,10 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import { CartProvider } from "@/context/CartContext";
+import { SearchProvider } from "@/context/SearchContext";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "./globals.css"; 
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,11 +28,13 @@ export default function RootLayout({
       <body
         className={`${inter.className}  antialiased flex flex-col min-h-screen`}
       >
-        <CartProvider>
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </CartProvider>
+      <SearchProvider>
+      <CartProvider>
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </CartProvider>
+    </SearchProvider>
       </body>
     </html>
   );
