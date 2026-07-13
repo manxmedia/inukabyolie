@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
+/* Removed unknown @custom-variant directive which caused linter warnings */
 
 :root {
   --background: oklch(1 0 0);

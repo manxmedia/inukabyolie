@@ -10,11 +10,17 @@ import Link from "next/link";
 import { useState } from "react";
 
 interface Product {
-  id: number;
-  image: string;
+id: number;
   name: string;
   price: number;
-  category?: string;
+  image: string;
+  description: string;
+
+  category: string[];
+
+  newArrival: boolean;
+  featured: boolean;
+  sale: boolean;
 }
 
 export default function ProductCard({ product }: { product: Product }) {
