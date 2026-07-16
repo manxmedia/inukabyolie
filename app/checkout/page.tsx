@@ -73,7 +73,7 @@ export default function CheckoutPage() {
     }));
   };
 
-const handleProceedToPayment = async () => {
+  const handleProceedToPayment = () => {
 
     if (!formData.firstName.trim())
       return alert("Enter First Name");
@@ -103,53 +103,16 @@ const handleProceedToPayment = async () => {
 
     }
 
-  try {
-  const response = await fetch("/api/orders", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      customer: {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-      },
-
+    console.log({
+      customer: formData,
       deliveryMethod,
-
-      address: {
-        street: formData.street,
-        apartment: formData.apartment,
-        suburb: formData.suburb,
-        city: formData.city,
-        province: formData.province,
-        postalCode: formData.postalCode,
-      },
-
       cart,
       subtotal,
       shipping,
       total,
-    }),
-  });
+    });
 
-  const data = await response.json();
-
-  if (!response.ok || !data.success) {
-    throw new Error(data.message || "Failed to create order.");
-  }
-
-  // Save only the order ID
-  sessionStorage.setItem("orderId", data.orderId);
-
-  router.push("/payment");
-} catch (error) {
-  console.error("Order creation failed:", error);
-
-  alert("Unable to create your order. Please try again.");
-}
+    router.push("/payment");
 
   };
 
