@@ -1,7 +1,18 @@
+
+import { sendEmail } from "@/lib/mail";
+
+import CustomerOrderEmail from "@/emails/CustomerOrderEmail";
+
+import AdminOrderEmail from "@/emails/AdminOrderEmail";
+
 import { NextRequest, NextResponse } from "next/server";
-import { UpdateCommand } from "@aws-sdk/lib-dynamodb";
+
+import {UpdateCommand,GetCommand,} from "@aws-sdk/lib-dynamodb";
 
 import { dynamoDb } from "@/lib/dynamodb";
+
+import React from "react";
+
 
 export async function GET(request: NextRequest) {
   try {
@@ -107,6 +118,58 @@ console.log("====================================");
         },
       })
     );
+
+    // Load the updated order from DynamoDB
+const orderResult = await dynamoDb.send(
+  new GetCommand({
+    TableName: process.env.DYNAMODB_TABLE_NAME!,
+    Key: {
+      orderId,
+    },
+  })
+);
+
+if (!orderResult.Item) {
+  throw new Error("Unable to load order after payment verification.");
+}
+
+const order = orderResult.Item;
+
+// =========================
+// Customer Email
+// =========================
+
+try {
+  await sendEmail({
+    to: order.customer.email,
+    subject: `Order Confirmation - ${order.orderId}`,
+email: React.createElement(CustomerOrderEmail, {
+  order,
+}),
+  });
+
+  console.log("Customer email sent.");
+} catch (error) {
+  console.error("Customer email failed:", error);
+}
+
+// =========================
+// Admin Email
+// =========================
+
+try {
+  await sendEmail({
+    to: "orders@inukabyolie.co.za",
+    subject: `New Paid Order - ${order.orderId}`,
+    email: React.createElement(AdminOrderEmail, {
+      order,
+}),
+  });
+
+  console.log("Admin email sent.");
+} catch (error) {
+  console.error("Admin email failed:", error);
+}
 
     return NextResponse.json({
       success: true,

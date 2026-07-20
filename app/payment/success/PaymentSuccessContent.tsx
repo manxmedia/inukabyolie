@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -31,9 +31,15 @@ export default function PaymentSuccessContent() {
   const [loading, setLoading] = useState(true);
   const [verified, setVerified] = useState(false);
   const [payment, setPayment] = useState<PaymentDetails | null>(null);
+  const hasVerified = useRef(false);
 
   useEffect(() => {
     const reference = searchParams.get("reference");
+    if (hasVerified.current) {
+  return;
+}
+
+hasVerified.current = true;
 
     if (!reference) {
       router.replace("/payment");
