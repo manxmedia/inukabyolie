@@ -133,7 +133,7 @@ if (!orderResult.Item) {
   throw new Error("Unable to load order after payment verification.");
 }
 
-const order = orderResult.Item;
+const order = orderResult.Item as any;
 
 // =========================
 // Customer Email
