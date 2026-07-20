@@ -1,11 +1,19 @@
 "use client";
 
+import { useState } from "react";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+
 import {
   CheckCircle,
   Clock,
@@ -17,15 +25,17 @@ import {
   Send,
   Shield,
 } from "lucide-react";
-import { useState } from "react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
+    phone: "",
     subject: "",
     message: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -33,29 +43,64 @@ export default function Contact() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
+
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const data = await response.json();
 
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 3000);
+      if (!response.ok) {
+        alert(data.message);
+        return;
+      }
+
+      setIsSubmitted(true);
+
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      console.error(error);
+
+      alert("Unable to send message.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: Mail,
       title: "Email Us",
-      details: ["hello@inukabyolie.co.za"],
+      details: ["info@inukabyolie.co.za"],
       description: "Send us an email anytime",
     },
     {
@@ -67,13 +112,20 @@ export default function Contact() {
     {
       icon: MapPin,
       title: "Visit Us",
-      details: ["Shop 232 Oriental Plaza Mall, 169 Bramfischer Drive, Ferndale", "Randburg, 2194"],
-      description: "Come say hello at our office",
+      details: [
+        "Shop 232 Oriental Plaza Mall",
+        "169 Bram Fischer Drive",
+        "Ferndale, Randburg 2194",
+      ],
+      description: "Come visit our showroom",
     },
     {
       icon: Clock,
       title: "Working Hours",
-      details: ["Monday - Friday: 8am - 6pm", "Saturday: 9am - 5pm"],
+      details: [
+        "Monday - Friday: 8am - 6pm",
+        "Saturday: 9am - 5pm",
+      ],
       description: "Sunday: Closed",
     },
   ];
@@ -104,15 +156,17 @@ export default function Contact() {
             <Badge className="mb-6 bg-primary text-primary-foreground">
               Get in Touch
             </Badge>
+
             <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-6">
-              We&apos;d love to{" "}
+              We'd love to
               <span className="text-primary block lg:inline lg:ml-4">
                 hear from you
               </span>
             </h1>
+
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Have a question, suggestion, or just want to say hello? We&apos;re
-              here to help and would love to hear from you.
+              Have a question, suggestion or need help with our products?
+              Fill in the form below and we'll respond as quickly as possible.
             </p>
           </div>
         </div>
@@ -121,95 +175,157 @@ export default function Contact() {
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12">
+
             <div className="lg:col-span-2">
+
               <Card>
+
                 <CardHeader>
-                  <CardTitle className="text-2xl font-bold text-foreground">
+
+                  <CardTitle className="text-2xl font-bold">
                     Send us a message
                   </CardTitle>
+
                   <p className="text-muted-foreground">
-                    Fill out the form below and we&apos;ll get back to you as
-                    soon as possible.
+                    Complete the form below and our team will contact you shortly.
                   </p>
+
                 </CardHeader>
+
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-4">
+
+                  <form
+                    onSubmit={handleSubmit}
+                    className="space-y-6"
+                  >
+                                        <div className="grid sm:grid-cols-2 gap-4">
+
                       <div className="space-y-2">
                         <label
-                          htmlFor="name"
+                          htmlFor="firstName"
                           className="text-sm font-medium text-foreground"
                         >
-                          Your Name
+                          First Name
                         </label>
+
                         <Input
-                          id="name"
-                          name="name"
+                          id="firstName"
+                          name="firstName"
                           type="text"
-                          placeholder="Nthabiseng Molife"
-                          value={formData.name}
+                          placeholder="Nthabiseng"
+                          value={formData.firstName}
                           onChange={handleInputChange}
                           required
                           className="bg-background border-border"
                         />
                       </div>
+
+                      <div className="space-y-2">
+                        <label
+                          htmlFor="lastName"
+                          className="text-sm font-medium text-foreground"
+                        >
+                          Last Name
+                        </label>
+
+                        <Input
+                          id="lastName"
+                          name="lastName"
+                          type="text"
+                          placeholder="Molife"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                          required
+                          className="bg-background border-border"
+                        />
+                      </div>
+
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-4">
 
                       <div className="space-y-2">
                         <label
                           htmlFor="email"
                           className="text-sm font-medium text-foreground"
                         >
-                          Your Email
+                          Email Address
                         </label>
+
                         <Input
                           id="email"
                           name="email"
                           type="email"
-                          placeholder="nthabi@example.com"
+                          placeholder="you@example.com"
                           value={formData.email}
                           onChange={handleInputChange}
                           required
                           className="bg-background border-border"
                         />
                       </div>
+
+                      <div className="space-y-2">
+                        <label
+                          htmlFor="phone"
+                          className="text-sm font-medium text-foreground"
+                        >
+                          Phone Number
+                        </label>
+
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          placeholder="+27 79 754 1315"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          className="bg-background border-border"
+                        />
+                      </div>
+
                     </div>
 
                     <div className="space-y-2">
+
                       <label
                         htmlFor="subject"
                         className="text-sm font-medium text-foreground"
                       >
                         Subject
                       </label>
+
                       <Input
                         id="subject"
                         name="subject"
                         type="text"
-                        placeholder="How can we help you?"
+                        placeholder="How can we help?"
                         value={formData.subject}
                         onChange={handleInputChange}
-                        required
                         className="bg-background border-border"
                       />
+
                     </div>
 
                     <div className="space-y-2">
+
                       <label
                         htmlFor="message"
                         className="text-sm font-medium text-foreground"
                       >
-                        Your Message
+                        Message
                       </label>
+
                       <Textarea
                         id="message"
                         name="message"
-                        placeholder="Tell us more about your question or concern..."
                         rows={6}
+                        placeholder="Tell us how we can help you..."
                         value={formData.message}
                         onChange={handleInputChange}
                         required
                         className="bg-background border-border resize-none"
                       />
+
                     </div>
 
                     <Button
@@ -235,28 +351,42 @@ export default function Contact() {
                         </div>
                       )}
                     </Button>
+
                   </form>
+
                 </CardContent>
+
               </Card>
+
             </div>
 
             <div className="space-y-8">
+
               <Card>
+
                 <CardHeader>
                   <CardTitle className="text-xl font-semibold">
                     Contact Information
                   </CardTitle>
                 </CardHeader>
+
                 <CardContent className="space-y-6">
+
                   {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-start gap-4">
+                    <div
+                      key={index}
+                      className="flex items-start gap-4"
+                    >
                       <div className="p-2 bg-primary/10 rounded-lg">
                         <info.icon className="h-5 w-5 text-primary" />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-foreground mb-1">
+
+                      <div className="flex-1">
+
+                        <h3 className="font-semibold mb-1">
                           {info.title}
                         </h3>
+
                         {info.details.map((detail, idx) => (
                           <p
                             key={idx}
@@ -265,130 +395,184 @@ export default function Contact() {
                             {detail}
                           </p>
                         ))}
+
                         <p className="text-xs text-muted-foreground mt-1">
                           {info.description}
                         </p>
+
                       </div>
+
                     </div>
                   ))}
-                </CardContent>
-              </Card>
 
-              <Card>
+                </CardContent>
+
+              </Card>
+                            <Card>
+
                 <CardHeader>
                   <CardTitle className="text-xl font-semibold">
                     Why Contact Us?
                   </CardTitle>
                 </CardHeader>
+
                 <CardContent className="space-y-4">
+
                   {features.map((feature, index) => (
                     <div key={index}>
+
                       <div className="flex items-start gap-3">
+
                         <div className="p-1 bg-accent/10 rounded">
                           <feature.icon className="h-4 w-4 text-accent-foreground" />
                         </div>
+
                         <div>
-                          <h4 className="font-medium text-foreground text-sm">
+                          <h4 className="font-medium text-sm">
                             {feature.title}
                           </h4>
+
                           <p className="text-xs text-muted-foreground">
                             {feature.description}
                           </p>
                         </div>
+
                       </div>
+
                       {index < features.length - 1 && (
                         <Separator className="mt-4" />
                       )}
+
                     </div>
                   ))}
+
                 </CardContent>
+
               </Card>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
       <section className="py-16 lg:py-24 bg-muted/30">
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
           <div className="text-center mb-12">
+
             <Badge variant="outline" className="mb-6">
               FAQ
             </Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
               Frequently Asked Questions
             </h2>
+
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Find quick answers to common questions about our products and
-              services.
+              Find answers to our most common customer questions.
             </p>
+
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
             {[
               {
                 question: "What are your shipping policies?",
                 answer:
-                  "We offer free shipping on orders over R5000, for local region. Standard shipping takes 3-5 business days.",
+                  "We offer free shipping on qualifying orders. Standard delivery takes approximately 3–5 business days.",
               },
               {
-                question: "How can I track my order?",
+                question: "How do I track my order?",
                 answer:
-                  "Once your order ships, you'll receive a tracking number via email to monitor your package.",
+                  "Once your order has shipped, we'll email your tracking number so you can monitor your parcel.",
               },
               {
-                question: "What is your return policy?",
+                question: "Can I return products?",
                 answer:
-                  "We accept returns within 3 days of purchase. Items must be in original condition and not open.",
+                  "Yes. Returns are accepted within 3 days provided products are unopened and in their original condition.",
               },
               {
-                question: "Do you offer international shipping?",
+                question: "Do you ship internationally?",
                 answer:
-                  "Yes, we ship worldwide. International shipping rates vary by destination.",
+                  "Yes. We ship worldwide. Shipping costs vary depending on your destination.",
               },
             ].map((faq, index) => (
-              <Card key={index} className="hover:shadow-md transition-shadow">
+
+              <Card
+                key={index}
+                className="hover:shadow-md transition-shadow"
+              >
+
                 <CardContent className="p-6">
-                  <h3 className="font-semibold text-foreground mb-3">
+
+                  <h3 className="font-semibold mb-3">
                     {faq.question}
                   </h3>
-                  <p className="text-sm text-muted-foreground">{faq.answer}</p>
+
+                  <p className="text-sm text-muted-foreground">
+                    {faq.answer}
+                  </p>
+
                 </CardContent>
+
               </Card>
+
             ))}
+
           </div>
+
         </div>
+
       </section>
 
       <section className="py-16 lg:py-24">
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
           <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
+
             <CardContent className="p-12 text-center">
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                 Still have questions?
               </h2>
+
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Can&apos;t find what you&apos;re looking for? Our customer
-                support team is here to help.
+                Our friendly customer support team is ready to assist you.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
                 <Button
                   size="lg"
                   className="bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   <Phone className="h-4 w-4 mr-2" />
-                  Call Us Now
+                  Call Us
                 </Button>
 
-                <Button size="lg" variant="outline">
+                <Button
+                  size="lg"
+                  variant="outline"
+                >
                   <Mail className="h-4 w-4 mr-2" />
-                  Live Chat
+                  Email Us
                 </Button>
+
               </div>
+
             </CardContent>
+
           </Card>
+
         </div>
+
       </section>
-    </div>
+          </div>
   );
 }

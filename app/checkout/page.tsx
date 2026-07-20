@@ -73,48 +73,82 @@ export default function CheckoutPage() {
     }));
   };
 
-  const handleProceedToPayment = () => {
+const handleProceedToPayment = async () => {
+  if (!formData.firstName.trim())
+    return alert("Enter First Name");
 
-    if (!formData.firstName.trim())
-      return alert("Enter First Name");
+  if (!formData.lastName.trim())
+    return alert("Enter Last Name");
 
-    if (!formData.lastName.trim())
-      return alert("Enter Last Name");
+  if (!formData.email.trim())
+    return alert("Enter Email Address");
 
-    if (!formData.email.trim())
-      return alert("Enter Email Address");
+  if (!formData.phone.trim())
+    return alert("Enter Phone Number");
 
-    if (!formData.phone.trim())
-      return alert("Enter Phone Number");
+  if (deliveryMethod === "delivery") {
+    if (!formData.street.trim())
+      return alert("Enter Street Address");
 
-    if (deliveryMethod === "delivery") {
+    if (!formData.city.trim())
+      return alert("Enter City");
 
-      if (!formData.street.trim())
-        return alert("Enter Street Address");
+    if (!formData.province.trim())
+      return alert("Enter Province");
 
-      if (!formData.city.trim())
-        return alert("Enter City");
+    if (!formData.postalCode.trim())
+      return alert("Enter Postal Code");
+  }
 
-      if (!formData.province.trim())
-        return alert("Enter Province");
+  try {
+    const response = await fetch("/api/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        customer: {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+        },
 
-      if (!formData.postalCode.trim())
-        return alert("Enter Postal Code");
+        deliveryMethod,
 
-    }
+        address:
+          deliveryMethod === "delivery"
+            ? {
+                street: formData.street,
+                apartment: formData.apartment,
+                suburb: formData.suburb,
+                city: formData.city,
+                province: formData.province,
+                postalCode: formData.postalCode,
+              }
+            : null,
 
-    console.log({
-      customer: formData,
-      deliveryMethod,
-      cart,
-      subtotal,
-      shipping,
-      total,
+        cart,
+        subtotal,
+        shipping,
+        total,
+      }),
     });
 
-    router.push("/payment");
+    const data = await response.json();
 
-  };
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+
+    sessionStorage.setItem("orderId", data.orderId);
+
+    router.push("/payment");
+  } catch (error) {
+    console.error(error);
+    alert("Unable to create order.");
+  }
+};
 
   return (
 
