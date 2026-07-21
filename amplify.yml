@@ -21,7 +21,7 @@ frontend:
             - echo "PAYSTACK_SECRET_KEY=$PAYSTACK_SECRET_KEY" >> .env
             - npm run build 
  
-        artifacts:
+    artifacts:
         baseDirectory: .next
         files:
             - '**/*'
