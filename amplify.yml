@@ -1,0 +1,33 @@
+ version: 1 
+ frontend: 
+ phases: 
+ preBuild: 
+ commands: 
+ - npm ci 
+ build: 
+ commands: 
+ - echo "SMTP_HOST=$SMTP_HOST" >> .env 
+ - echo "SMTP_PORT=$SMTP_PORT" >> .env 
+ - echo "SMTP_SECURE=$SMTP_SECURE" >> .env 
+ - echo "SMTP_USER=$SMTP_USER" >> .env 
+ - echo "SMTP_PASSWORD=$SMTP_PASSWORD" >> .env 
+ - echo "MAIL_FROM=$MAIL_FROM" >> .env 
+ - echo "REGION=$REGION" >> .env 
+ - echo "DYNAMODB_TABLE_NAME=$DYNAMODB_TABLE_NAME" >> .env 
+ - echo "NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL" >> .env 
+ - echo "NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=$NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY" >> .env 
+ - echo "ACCESS_KEY_ID=$ACCESS_KEY_ID" >> .env 
+ - echo "SECRET_ACCESS_KEY=$SECRET_ACCESS_KEY" >> .env 
+ - echo "PAYSTACK_SECRET_KEY=$PAYSTACK_SECRET_KEY" >> .env
+ - npm run build 
+ 
+ artifacts: 
+ baseDirectory: .next 
+ files: 
+ - '**/*' 
+ cache: 
+ paths: 
+ - '.next/cache/**/*'
+ - '.npm/**/*'
+ - node_modules/**/*  
+ 
