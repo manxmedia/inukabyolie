@@ -75,9 +75,15 @@ export async function POST(request: NextRequest) {
       createdAt: timestamp,
       updatedAt: timestamp,
     };
-
-    //console.log("Saving to table:", process.env.DYNAMODB_TABLE_NAME);
-    //console.log(order);
+    //logs to console for debugging
+    console.log("Saving to table:", process.env.DYNAMODB_TABLE_NAME);
+    console.log(order);
+    console.log("===== CREATE ORDER =====");
+    console.log("Table:", process.env.DYNAMODB_TABLE_NAME);
+    console.log("Order ID:", orderId);
+    console.log("Customer:", customer);
+    console.log("Cart Items:", cart.length);
+    //end of logs
     
     await dynamoDb.send(
       new PutCommand({
